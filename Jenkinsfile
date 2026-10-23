@@ -1,43 +1,35 @@
-```groovy
+
 pipeline {
-   
+    agent any
+
     environment {
         COURSE = 'jenkins'
     }
 
     stages {
-
         stage('Build') {
             steps {
-                script {
-                    echo "building ..."
+                echo 'Building...'
 
-                    sh """
-                        echo "Hello Build"
-                        echo "Course: \$COURSE"
-                    """
+                sh '''
+                    echo "Hello Build"
+                    echo "Course: $COURSE"
+                '''
 
-                    echo 'Building the application'
-                }
+                echo 'Building the application'
             }
         }
 
         stage('Test') {
             steps {
-                script {
-                    echo 'testing ...'
-                }
-
+                echo 'Testing...'
                 echo 'Testing the application'
             }
         }
 
         stage('Deploy') {
             steps {
-                script {
-                    echo 'deploying ...'
-                }
-
+                echo 'Deploying...'
                 echo 'Deploying the application'
             }
         }
@@ -58,4 +50,3 @@ pipeline {
         }
     }
 }
-```
